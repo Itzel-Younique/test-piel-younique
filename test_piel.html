@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Cuidado de la Piel</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fce4ec; /* Rosa claro */
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        h1, h2 {
+            color: #d81b60; /* Rosa oscuro */
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .question-group {
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input[type="radio"] {
+            margin-right: 8px;
+            transform: scale(1.1);
+        }
+        .radio-option {
+            margin-right: 20px;
+            display: inline-block;
+        }
+        button {
+            background-color: #d81b60; /* Rosa oscuro */
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #b71c1c; /* Rojo oscuro */
+        }
+        #results {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #fff8e1; /* Amarillo claro */
+            border: 1px solid #ffe082; /* Amarillo */
+            border-radius: 8px;
+            display: none; /* Hidden by default */
+        }
+        #results p {
+            margin-bottom: 15px;
+            font-size: 17px;
+            color: #444;
+        }
+        #results ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+        #results ul li {
+            background-color: #fff3e0;
+            margin-bottom: 8px;
+            padding: 10px 15px;
+            border-left: 4px solid #ffab40;
+            border-radius: 4px;
+        }
+        #results a {
+            color: #d81b60;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        #results a:hover {
+            text-decoration: underline;
+        }
+        .emoji {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✨ Descubre tu Rutina de Piel Ideal ✨</h1>
+        <h2>Completa este test rápido y recibe recomendaciones personalizadas.</h2>
+
+        <form id="skinCareTest">
+            <div class="question-group">
+                <label for="name">Tu Nombre:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="question-group">
+                <label>1. ¿Tu piel es seca, grasa o mixta?</label>
+                <div class="radio-option">
+                    <input type="radio" id="skinDry" name="skinType" value="seca" required>
+                    <label for="skinDry">Seca</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="skinOily" name="skinType" value="grasa">
+                    <label for="skinOily">Grasa</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="skinMixed" name="skinType" value="mixta">
+                    <label for="skinMixed">Mixta</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <label>2. ¿Te maquillas diario o no?</label>
+                <div class="radio-option">
+                    <input type="radio" id="makeupYes" name="makeup" value="si" required>
+                    <label for="makeupYes">Sí</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="makeupNo" name="makeup" value="no">
+                    <label for="makeupNo">No</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <label>3. ¿Tomas suficiente agua (2lt al día)?</label>
+                <div class="radio-option">
+                    <input type="radio" id="waterYes" name="water" value="si" required>
+                    <label for="waterYes">Sí</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="waterNo" name="water" value="no">
+                    <label for="waterNo">No</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <label>4. ¿Puedes identificar muchas líneas de expresión o arrugas?</label>
+                <div class="radio-option">
+                    <input type="radio" id="wrinklesYes" name="wrinkles" value="si" required>
+                    <label for="wrinklesYes">Sí</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="wrinklesNo" name="wrinkles" value="no">
+                    <label for="wrinklesNo">No</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <label>5. ¿Sientes que tu piel está apagada (sin brillo)?</label>
+                <div class="radio-option">
+                    <input type="radio" id="dullSkinYes" name="dullSkin" value="si" required>
+                    <label for="dullSkinYes">Sí</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="dullSkinNo" name="dullSkin" value="no">
+                    <label for="dullSkinNo">No</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <label>6. ¿Tienes uñas débiles?</label>
+                <div class="radio-option">
+                    <input type="radio" id="nailsYes" name="nails" value="si" required>
+                    <label for="nailsYes">Sí</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="nailsNo" name="nails" value="no">
+                    <label for="nailsNo">No</label>
+                </div>
+            </div>
+
+            <div class="question-group">
+                <label>7. ¿Se te cae el cabello?</label>
+                <div class="radio-option">
+                    <input type="radio" id="hairLossYes" name="hairLoss" value="si" required>
+                    <label for="hairLossYes">Sí</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="hairLossNo" name="hairLoss" value="no">
+                    <label for="hairLossNo">No</label>
+                </div>
+            </div>
+
+            <button type="submit">Ver mis Resultados</button>
+        </form>
+
+        <div id="results">
+            </div>
+    </div>
+
+    <script>
+        document.getElementById('skinCareTest').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const name = document.getElementById('name').value;
+            const skinType = document.querySelector('input[name="skinType"]:checked').value;
+            const wrinkles = document.querySelector('input[name="wrinkles"]:checked').value;
+            const dullSkin = document.querySelector('input[name="dullSkin"]:checked').value;
+            const nails = document.querySelector('input[name="nails"]:checked').value;
+            const hairLoss = document.querySelector('input[name="hairLoss"]:checked').value;
+
+            let message = '';
+            let foodTips = '';
+            let productRecommendation = '';
+
+            // Prioritize specific conditions
+            if (wrinkles === 'si') {
+                message = `Hola ${name}, vi que en tu test mencionaste líneas de expresión o arruguitas más marcadas.
+                Esto es totalmente normal, especialmente a partir de los 25 años… pero aquí es donde el colágeno marino entra con todo 💛
+                Te ayuda a mantener la firmeza de la piel, reduciendo la apariencia de arrugas desde el interior. ¡Y lo mejor es que es súper fácil de tomar!`;
+                foodTips = 'Incluye en tu nutrición: 🍊 Naranjas/kiwi (vitamina C), 🥕 Zanahoria (beta-caroteno), 🥜 Almendras (vitamina E)';
+                productRecommendation = 'Y si quieres aprovechar, puedes incluir en tu día a día <a href="https://www.younique.com/itzelromoalvarez/pdp/US-17101-06" target="_blank">YOU·NIVERSAL Eye Cream – Crema hidratante para el contorno de ojos</a>, excelente para combatir líneas finas y mejorar firmeza. Puedes encontrarla en mi tienda en línea.';
+            } else if (dullSkin === 'si') {
+                message = `Hola ${name}, gracias por contestar el test. Noté que tu piel se siente apagada o sin vida últimamente.
+                El colágeno marino Younique puede ser tu mejor aliado ✨
+                Además de mejorar textura y firmeza, aporta ese “glow natural” que se nota y se siente. ¡Te va a encantar!`;
+                foodTips = 'Asegúrate de consumir: 🪴 Espinaca y kale (vitaminas y minerales), 🍓 Fresas (antioxidantes), 🐟 Salmón (omega‑3)';
+                productRecommendation = 'Además puedes incluir en tu rutina de belleza la crema hidratante <a href="https://www.younique.com/itzelromoalvarez/pdp/US-17201-04" target="_blank">GLOWPLEXION</a>, ofrecen una suave hidratación profunda al tiempo en que ayuda a mejorar el tono y la textura de tu piel. Experimenta una piel radiante y lista para "selfies", encuéntrala en línea.';
+            } else if (nails === 'si' || hairLoss === 'si') {
+                message = `Hola ${name}, vi que mencionaste debilidad en las uñas o caída de cabello.
+                ¡Estás en el lugar correcto! 💛 El colágeno marino Younique ayuda a fortalecer uñas, estimular crecimiento de cabello y mejorar su volumen.
+                Lo que más me encanta es que se nota en pocas semanas y te ayuda a sentirte mejor desde adentro.`;
+                foodTips = 'Incluye en tu alimentación: 🥚 Huevos (proteína + biotina), 🍣 Pescado (omega‑3), 🥦 Brócoli (hierro y vitaminas B)';
+                productRecommendation = 'Además puedes complementar tu colágeno con las <a href="https://www.younique.com/itzelromoalvarez/pdp/US-16304-47" target="_blank">Gominolas/ Gomitas Para Cabello, Piel Y Uñas</a>; están formuladas para ayudar a mantener la apariencia de la salud general del cabello, promover la apariencia del cabello con volumen, promover la salud del cuero cabelludo, disminuir la apariencia del cabello canoso, apoyar uñas fuertes, apoyar una piel de aspecto radiante y ayudar a reducir la caída del cabello, encuéntralas en mi tienda en línea.';
+            } else if (skinType === 'seca') {
+                message = `Hola ${name}, gracias por responder el test. Tu piel muestra signos de resequedad y falta de hidratación 💦
+                El colágeno marino Younique puede ayudarte muchísimo, ya que mejora la hidratación desde adentro, y además fortalece la barrera natural de la piel.
+                ¡Vas a amar ese glow saludable que empieza a notarse en solo unas semanas! ✨`;
+                foodTips = 'Además acuérdate de consumir estos alimentos: 🥑 Aguacate (grasas saludables), 🫐 Bayas (antioxidantes), 🥣 Avena (nutritiva e hidratante)';
+                productRecommendation = 'Y si quieres tener una piel super hidratada, Te recomiendo: <a href="https://www.younique.com/itzelromoalvarez/pdp/US-17500-05" target="_blank">YOUTHPLEXION Day Moisturizer</a> – Hidratante diaria avanzada con protección e ingredientes reafirmantes, ideal para piel seca o envejecida. Encuéntrala en mi página lista para comprar.';
+            } else if (skinType === 'grasa' || skinType === 'mixta') { // Assuming mixed skin might also have impurities concern
+                message = `Hola ${name}, gracias por tus respuestas. Aunque el colágeno no elimina la grasa, sí ayuda a mejorar la calidad general de tu piel, equilibrando y regenerando desde adentro.
+                Además, apoya la cicatrización de marquitas o granitos. Lo puedes complementar con buena hidratación y limpieza facial. ¡Es un combo ideal!`;
+                foodTips = 'Recuerda alimentarte con: 🫒 Aceite de oliva en crudo, 🥒 Pepino (péptidos calmantes), 🍵 Té verde (antiinflamatorio)';
+                productRecommendation = 'Además puedes incluir en tu rutina de limpieza el <a href="https://www.younique.com/itzelromoalvarez/pdp/US-17101-04" target="_blank">YOU·NIVERSAL Gentle Gel Cleanser</a> – Jabón facial suave, perfecto para pieles grasas o sensibles, limpia sin resecar. Encuéntralo en línea.';
+            }
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <p>${message}</p>
+                <p>👉 Recuerda que el agua es clave: ¡hidrátate bien!</p>
+                <p>${foodTips}</p>
+                <p>${productRecommendation}</p>
+            `;
+            resultsDiv.style.display = 'block'; // Show results
+        });
+    </script>
+</body>
+</html>
